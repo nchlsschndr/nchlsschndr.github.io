@@ -1,0 +1,140 @@
+// body>div>div>div{outline:3px solid rgba(200,200,255,.7);opacity:.8;background: rgba(255,255,255,.5)!important;}
+
+body {
+  background: #200122;
+  background: -webkit-linear-gradient(to top, #b70016, #81143e);
+  background: linear-gradient(to top, #b70016, #81143e);
+  min-height: 100vh;
+  &:hover {
+    .wrapper, .text, .one, .two {
+      animation-play-state: running;
+    }
+  }
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  animation: wrapper 0.6s ease-out 1.35s forwards paused;
+}
+
+.text {
+  color: white;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  letter-spacing: -5px;
+  font-size: 130px;
+  float: left;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -52px;
+  animation: text 0.4s ease-out 1.6s forwards paused;
+  opacity: 0;
+}
+
+.logo{
+  float: right;
+  transform:rotate(222.3deg) skewX(2deg);
+  width: 100px;
+  height: 100px;
+
+  div {
+    background: rgba(255,255,255,1);
+  }
+  .one {
+    position: absolute;
+    height: 46px;
+    width: 75px;
+    border-radius: 25px 25px 25px 25px;
+    animation: one .2s linear forwards paused, one-one 0.15s ease-in .55s forwards paused;
+    opacity: 0;
+  }
+
+  .two {
+    position: absolute;
+    height: 46px;
+    width: 46px;
+    border-radius: 15px 25px 25px 25px;
+    animation: two .2s ease-out .2s forwards paused, two-two .3s ease-in .4s forwards paused;
+    opacity: 0;
+  }
+}
+
+@keyframes one {
+  from {
+    border-radius: 25px 25px 25px 25px;
+    transform: translateX(40px);
+    width: 250px;
+    opacity: 0;
+  }
+  to {
+    border-radius: 10px 25px 25px 25px;
+    transform: translateX(0px);
+    width: 46px;
+    opacity: 1;
+  }
+}
+
+@keyframes one-one {
+  from {
+    border-radius: 10px 25px 25px 25px;
+    transform: translateX(0px);
+    width: 46px;
+    opacity: 1;
+  }
+  to {
+    border-radius: 0px 25px 25px 0px;
+    transform: translateX(0px);
+    width: 75px;
+    opacity: 1;
+  }
+}
+
+@keyframes two {
+  from {
+    border-radius: 25px 25px 25px 25px;
+    transform: translateY(0px);
+    height: 46px;
+    opacity: 1;
+  }
+  to {
+    border-radius: 10px 25px 25px 25px;
+    // transform: translateY(5px);
+    height: 125px;
+    opacity: 1;
+  }
+}
+
+@keyframes two-two {
+  from {
+    border-radius: 10px 25px 25px 25px;
+    // transform: translateY(5px);
+    height: 125px;
+  }
+  to {
+    border-radius: 25px 25px 25px 25px;
+    transform: translateY(0px);
+    height: 100px;
+  }
+}
+
+@keyframes wrapper {
+  from {
+    width: 140px
+  }
+  to {
+    width: 570px
+  }
+}
+
+@keyframes text {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
