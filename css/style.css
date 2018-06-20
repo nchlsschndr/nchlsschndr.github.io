@@ -3,8 +3,6 @@ body {
   background: -webkit-linear-gradient(to top, #b70016, #81143e);
   background: linear-gradient(to top, #b70016, #81143e);
   min-height: 100vh; }
-  body:hover .wrapper, body:hover .text, body:hover .one, body:hover .two {
-    animation-play-state: running; }
 
 .wrapper {
   position: absolute;

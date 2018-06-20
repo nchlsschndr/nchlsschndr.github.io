@@ -5,11 +5,11 @@ body {
   background: -webkit-linear-gradient(to top, #b70016, #81143e);
   background: linear-gradient(to top, #b70016, #81143e);
   min-height: 100vh;
-  &:hover {
-    .wrapper, .text, .one, .two {
-      animation-play-state: running;
-    }
-  }
+  // &:hover {
+  //   .wrapper, .text, .one, .two {
+  //     animation-play-state: running;
+  //   }
+  // }
 }
 
 .wrapper {
