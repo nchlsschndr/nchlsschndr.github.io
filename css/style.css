@@ -10,7 +10,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 140px;
-  animation: wrapper 0.6s ease-out 1.35s forwards paused; }
+  animation: wrapper 0.6s ease-out 1.35s forwards running; }
 
 .text {
   color: white;
@@ -22,7 +22,7 @@ body {
   position: absolute;
   bottom: 0;
   margin-bottom: -52px;
-  animation: text 0.4s ease-out 1.6s forwards paused;
+  animation: text 0.4s ease-out 1.6s forwards running;
   opacity: 0; }
 
 .logo {
@@ -37,14 +37,14 @@ body {
     height: 46px;
     width: 75px;
     border-radius: 25px 25px 25px 25px;
-    animation: one .2s linear forwards paused, one-one 0.15s ease-in .55s forwards paused;
+    animation: one .2s linear forwards running, one-one 0.15s ease-in .55s forwards running;
     opacity: 0; }
   .logo .two {
     position: absolute;
     height: 46px;
     width: 46px;
     border-radius: 15px 25px 25px 25px;
-    animation: two .2s ease-out .2s forwards paused, two-two .3s ease-in .4s forwards paused;
+    animation: two .2s ease-out .2s forwards running, two-two .3s ease-in .4s forwards running;
     opacity: 0; }
 
 @keyframes one {
