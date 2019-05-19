@@ -1,15 +1,12 @@
 // body>div>div>div{outline:3px solid rgba(200,200,255,.7);opacity:.8;background: rgba(255,255,255,.5)!important;}
 
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+
 body {
   background: #200122;
   background: -webkit-linear-gradient(to top, #b70016, #81143e);
   background: linear-gradient(to top, #b70016, #81143e);
   min-height: 100vh;
-  // &:hover {
-  //   .wrapper, .text, .one, .two {
-  //     animation-play-state: running;
-  //   }
-  // }
 }
 
 .wrapper {
@@ -23,7 +20,7 @@ body {
 
 .text {
   color: white;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Didact Gothic', sans-serif;
   font-weight: bold;
   letter-spacing: -5px;
   font-size: 130px;
