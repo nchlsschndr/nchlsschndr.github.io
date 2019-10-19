@@ -1,7 +1,5 @@
 # nchlsschndr.github.io
 
-git add --all
-
-git commit -m "XXX"
-
-git push -u origin master
+[/parship](https://nchlsschndr.github.io/parship)
+[/material-old](https://nchlsschndr.github.io/material-old)
+[/calculator](https://nchlsschndr.github.io/calculator)
