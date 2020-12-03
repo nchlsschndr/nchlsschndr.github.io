@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap");
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0; }
@@ -11,8 +12,9 @@ body {
   justify-content: center;
   background: #334; }
 
-button, p {
-  font-family: "Open Sans"; }
+button,
+p {
+  font-family: 'Open Sans'; }
 
 :root {
   --text-color: #222; }
@@ -36,7 +38,7 @@ button, p {
   text-align: right;
   background: #334;
   border-radius: 5px;
-  font-family: "Share Tech Mono", monospace;
+  font-family: 'Share Tech Mono', monospace;
   overflow: hidden; }
 
 .button {
@@ -54,16 +56,16 @@ button, p {
   font-size: 30px;
   user-select: none;
   cursor: pointer;
-  transition: background .1s;
+  transition: background 0.1s;
   outline: none; }
   .button p {
     margin: 0; }
   .button:active {
     background: #334; }
-  .button.active {
-    background: #334; }
 
-.operations, .numbers, .clear {
+.operations,
+.numbers,
+.clear {
   display: flex;
   flex-wrap: wrap; }
 
@@ -87,7 +89,7 @@ button, p {
   width: 300px; }
 
 .debug {
-  opacity: .4;
+  opacity: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -96,8 +98,17 @@ button, p {
   color: #aab;
   padding: 5px 10px;
   border-bottom-right-radius: 5px; }
-  .debug .hide {
-    color: transparent; }
+  .debug .checkbox-container {
+    display: flex;
+    align-items: center; }
+    .debug .checkbox-container label {
+      font-family: monospace;
+      cursor: pointer; }
+  .debug hr {
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #aab;
+    margin-top: 5px; }
   .debug p {
     font-family: monospace;
     margin: 5px 0; }

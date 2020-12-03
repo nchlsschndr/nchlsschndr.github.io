@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>JS Calculator</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/big-js@3.1.3/big.min.js"></script>
+    </head>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script src='https://cdn.jsdelivr.net/npm/big-js@3.1.3/big.min.js'></script>
-  </head>
-
-  <body>
-    <div class="calculator">
-      <div class="display">
-        <p id="display">0</p>
-      </div>
-      <div class="pad">
-        <div class="clear">
-          <button data-key="allClear" class="button">AC</button>
-          <button data-key="clear" class="button">CE</button>
+    <body>
+        <div class="calculator">
+            <div class="display">
+                <p id="display">0</p>
+            </div>
+            <div class="pad">
+                <div class="clear">
+                    <button data-key="allClear" class="button">AC</button>
+                    <button data-key="clear" class="button">C</button>
+                </div>
+                <div class="operations">
+                    <button data-key-type="operator" data-key="plus" class="button">+</button>
+                    <button data-key-type="operator" data-key="minus" class="button">−</button>
+                    <button data-key-type="operator" data-key="divide" class="button">÷</button>
+                    <button data-key-type="operator" data-key="multiply" class="button">×</button>
+                </div>
+                <div class="numbers">
+                    <button data-key="7" class="button">7</button>
+                    <button data-key="8" class="button">8</button>
+                    <button data-key="9" class="button">9</button>
+                    <button data-key="4" class="button">4</button>
+                    <button data-key="5" class="button">5</button>
+                    <button data-key="6" class="button">6</button>
+                    <button data-key="1" class="button">1</button>
+                    <button data-key="2" class="button">2</button>
+                    <button data-key="3" class="button">3</button>
+                    <button data-key="0" class="button zero">0</button>
+                    <button data-key="comma" class="button">.</button>
+                </div>
+                <button data-key="equals" class="button equals">=</button>
+            </div>
         </div>
-        <div class="operations">
-          <button data-key-type="operator" data-key="plus" class="button">+</button>
-          <button data-key-type="operator" data-key="minus" class="button">−</button>
-          <button data-key-type="operator" data-key="divide" class="button">÷</button>
-          <button data-key-type="operator" data-key="multiply" class="button">×</button>
+        <div class="debug">
+            <div class="checkbox-container">
+                <input type="checkbox" name="show-debug-data" id="show-debug-data" onclick="showDebug()" />
+                <label for="show-debug-data">Debug window</label>
+            </div>
+            <div class="debug-data" style="display: none">
+                <hr />
+                <p class="temp-num">-------tempNum: null</p>
+                <p class="active-operator">activeOperator: ''</p>
+                <p class="current-num">----currentNum: ''</p>
+                <p class="result">--------result: null</p>
+            </div>
         </div>
-        <div class="numbers">
-          <button data-key="7" class="button">7</button>
-          <button data-key="8" class="button">8</button>
-          <button data-key="9" class="button">9</button>
-          <button data-key="4" class="button">4</button>
-          <button data-key="5" class="button">5</button>
-          <button data-key="6" class="button">6</button>
-          <button data-key="1" class="button">1</button>
-          <button data-key="2" class="button">2</button>
-          <button data-key="3" class="button">3</button>
-          <button data-key="0" class="button zero">0</button>
-          <button data-key="comma" class="button">.</button>
-        </div>
-        <button data-key="equals" class="button equals">=</button>
-      </div>
-    </div>
-    <div class="debug">
-      <p class="temp-num">-------tempNum: null</p>
-      <p class="active-operator">activeOperator:</p>
-      <p class="current-num">----currentNum: []</p>
-      <p class="result">--------result: null</p>
-    </div>
 
-    <script type="text/javascript" src="js/scripts.js"></script>
-  </body>
-
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript">
+            const debugData = document.querySelector('.debug-data');
+            const checkbox = document.querySelector('#show-debug-data');
+            function showDebug() {
+                checkbox.checked ? (debugData.style.display = 'block') : (debugData.style.display = 'none');
+            }
+        </script>
+    </body>
 </html>
