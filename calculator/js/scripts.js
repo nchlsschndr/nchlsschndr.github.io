@@ -1,10 +1,16 @@
+// TODO:
+// -Merge updateDisplay and 'currentNum = xxx'
+// -merge ac and C
+// -Flexible layout
+// Tests!!
+
 const display = document.querySelector('#display');
 const keys = document.querySelector('.pad');
 
 let currentNum = '';
 let tempNum = null;
 let activeOperator = '';
-let result = null;
+let calcIsDone = false;
 
 keys.addEventListener('click', (event) => {
     // event delegation
@@ -14,13 +20,13 @@ keys.addEventListener('click', (event) => {
     }
 });
 
-function handleClick(key) {
+const handleClick = (key) => {
     // check if key is a number
     if (/[0-9]/.test(key)) {
         // empty everything after there was a previous operation to start over
-        if (result) {
+        if (calcIsDone) {
             currentNum = '';
-            result = null;
+            calcIsDone = false;
             updateDisplay('0');
         }
         currentNum += parseInt(key, 10);
@@ -39,7 +45,7 @@ function handleClick(key) {
     if (key === 'allClear') {
         currentNum = '';
         tempNum = null;
-        result = null;
+        calcIsDone = false;
         setOperator('reset');
         updateDisplay('0');
     }
@@ -58,6 +64,41 @@ function handleClick(key) {
         setOperator(key);
     }
 
+    if (key === 'plusminus') {
+        if (currentNum !== '') {
+            if (currentNum.indexOf('-') === -1) {
+                currentNum = '-' + currentNum;
+                updateDisplay(currentNum);
+            } else {
+                currentNum = currentNum.substring(1);
+                updateDisplay(currentNum);
+            }
+        }
+    }
+
+    if (key === 'percentage') {
+        if (activeOperator === 'multiply') {
+            currentNum = (tempNum / 100) * currentNum;
+            calcIsDone = true;
+            setOperator('reset');
+            updateDisplay(currentNum);
+        }
+
+        if (activeOperator === 'plus') {
+            currentNum = tempNum + (tempNum / 100) * currentNum;
+            calcIsDone = true;
+            setOperator('reset');
+            updateDisplay(currentNum);
+        }
+
+        if (activeOperator === 'minus') {
+            currentNum = tempNum - (tempNum / 100) * currentNum;
+            calcIsDone = true;
+            setOperator('reset');
+            updateDisplay(currentNum);
+        }
+    }
+
     if (key === 'equals') {
         equals();
     }
@@ -66,18 +107,18 @@ function handleClick(key) {
     document.querySelector('.temp-num').textContent = `-------tempNum: ${tempNum}`;
     document.querySelector('.active-operator').textContent = `activeOperator: '${activeOperator}'`;
     document.querySelector('.current-num').textContent = `----currentNum: '${currentNum}'`;
-    document.querySelector('.result').textContent = `--------result: ${result}`;
-}
+    document.querySelector('.calc-is-done').textContent = `----calcIsDone: ${calcIsDone}`;
+};
 
-function updateDisplay(value) {
+const updateDisplay = (value) => {
     if (value.length > 12) {
         display.textContent = value.substring(0, 10) + '..';
         return;
     }
     display.textContent = value;
-}
+};
 
-function setOperator(operator) {
+const setOperator = (operator) => {
     const buttons = document.querySelectorAll('button[data-key-type="operator"]');
 
     buttons.forEach((el) => {
@@ -98,28 +139,28 @@ function setOperator(operator) {
         }
 
         activeOperator = operator;
-
         const button = document.querySelector(`button[data-key="${operator}"]`);
         button.classList.add('active');
     }
-}
+};
 
-function equals() {
+const equals = () => {
     if (tempNum !== null && currentNum.length > 0) {
         if (activeOperator === 'divide' && currentNum === '0') {
-            updateDisplay('Err: DIV/0!');
             currentNum = '';
+            updateDisplay('Err: DIV/0!');
             return;
         }
-        result = calculate(tempNum, activeOperator, parseFloat(currentNum));
-        tempNum = null;
+        const result = calculate(tempNum, activeOperator, parseFloat(currentNum));
         currentNum = result.toString(); // calculate with in the next step
+        tempNum = null;
+        calcIsDone = true;
         setOperator('reset');
         updateDisplay(currentNum);
     }
-}
+};
 
-function calculate(one, operator, two) {
+const calculate = (one, operator, two) => {
     // Big.js for calculating with floats
     // https://github.com/MikeMcl/big.js/
     const x = new Big(one);
@@ -137,7 +178,7 @@ function calculate(one, operator, two) {
         default:
             return 'operator error';
     }
-}
+};
 
 // Keyboard functionality
 document.onkeydown = (event) => {
