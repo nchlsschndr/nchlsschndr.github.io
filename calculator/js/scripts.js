@@ -1,16 +1,17 @@
 // TODO:
-// -Merge updateDisplay and 'currentNum = xxx'
-// -merge ac and C
-// -Flexible layout
 // Tests!!
 
 const display = document.querySelector('#display');
 const keys = document.querySelector('.pad');
+const acBtn = document.querySelector('[data-key=allClear]');
 
 let currentNum = '';
 let tempNum = null;
 let activeOperator = '';
 let calcIsDone = false;
+
+// AC <-> C
+let onlyClear = false;
 
 keys.addEventListener('click', (event) => {
     // event delegation
@@ -29,6 +30,11 @@ const handleClick = (key) => {
             calcIsDone = false;
             updateDisplay('0');
         }
+
+        if (activeOperator !== '') {
+            onlyClear = true;
+            acBtn.innerHTML = 'C';
+        }
         currentNum += parseInt(key, 10);
         updateDisplay(currentNum);
     }
@@ -44,10 +50,14 @@ const handleClick = (key) => {
 
     if (key === 'allClear') {
         currentNum = '';
-        tempNum = null;
-        calcIsDone = false;
-        setOperator('reset');
         updateDisplay('0');
+        acBtn.innerHTML = 'AC';
+        if (!onlyClear) {
+            tempNum = null;
+            calcIsDone = false;
+            setOperator('reset');
+        }
+        onlyClear = false;
     }
 
     if (key === 'clear') {
